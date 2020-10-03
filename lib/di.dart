@@ -4,6 +4,8 @@ int calculate() {
   return 6 * 7;
 }
 
+// ====== Vehiculos ===
+
 abstract class Vehicle {
   final String _license;
   final String _description;
@@ -42,6 +44,7 @@ class Train extends Vehicle {
   }
 }
 
+// ====== Usuario ======
 class Traveller {
   final String _name;
   Vehicle _vehicle;
