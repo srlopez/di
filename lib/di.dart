@@ -4,59 +4,35 @@ int calculate() {
   return 6 * 7;
 }
 
-// ====== Vehiculos ====
-
-abstract class Vehicle {
-  final String _license;
-  final String _description;
+class Vehicle {
+  String _license;
+  String _description;
 
   Vehicle({String license, String description})
       : _license = license,
         _description = description;
 
-  double Move(int km); //No implementada - Interface
+  double Move(int km) {
+    print("Moving vehicle: $this");
+    return Random().nextDouble() * km;
+  }
 
   @override
   String toString() {
-    return 'Vehicle [license: $_license, description: $_description]';
+    return "Vehicle [license=$_license, description=$_description";
   }
 }
 
-class Car extends Vehicle {
-  Car({String license, String description})
-      : super(license: license, description: description);
-
-  @override
-  double Move(int km) {
-    print('Moving car: $this');
-    return Random().nextDouble() * km;
-  }
-}
-
-class Train extends Vehicle {
-  Train({String license, String description})
-      : super(license: license, description: description);
-
-  @override
-  double Move(int km) {
-    print('Moving train: $this');
-    return Random().nextDouble() * km;
-  }
-}
-
-// ====== Usuario ======
 class Traveller {
-  final String _name;
+  String _name;
   Vehicle _vehicle;
 
-  Traveller({String name, Vehicle vehicle})
+  Traveller({String name})
       : _name = name,
-        _vehicle = vehicle;
-
-  set vehicle(Vehicle v) => _vehicle = v;
+        _vehicle = Vehicle(license: "20249JSH", description: "Skoda Fabia");
 
   double Move(int km) {
-    print('$_name travelling: $km');
+    print("Travelling: $km");
     return _vehicle.Move(km); //cost
   }
 }
