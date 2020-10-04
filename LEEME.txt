@@ -1,0 +1,11 @@
+Este es un ejemplo de como evoluciona las clases
+de acopladas a desacopladas, y a iyectadas y al final usando un paquete
+localizador de serviciso como GetIt.
+
+Para mostrar la inyección de dependencia.
+
+Hay cautro ramas
+00 en la que se muestran las calses acopladas
+01 las desacoplamos
+02 aplicamos la iyección de dependencia
+03 Usamos el paquete GetIt
