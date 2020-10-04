@@ -4,7 +4,9 @@ int calculate() {
   return 6 * 7;
 }
 
-class Vehicle {
+// ====== Vehiculos ====
+
+abstract class Vehicle {
   final String _license;
   final String _description;
 
@@ -12,10 +14,7 @@ class Vehicle {
       : _license = license,
         _description = description;
 
-  double Move(int km) {
-    print('Moving vehicle: $this');
-    return Random().nextDouble() * km;
-  }
+  double Move(int km); //No implementada - Interface
 
   @override
   String toString() {
@@ -23,13 +22,38 @@ class Vehicle {
   }
 }
 
+class Car extends Vehicle {
+  Car({String license, String description})
+      : super(license: license, description: description);
+
+  @override
+  double Move(int km) {
+    print('Moving car: $this');
+    return Random().nextDouble() * km;
+  }
+}
+
+class Train extends Vehicle {
+  Train({String license, String description})
+      : super(license: license, description: description);
+
+  @override
+  double Move(int km) {
+    print('Moving train: $this');
+    return Random().nextDouble() * km;
+  }
+}
+
+// ====== Usuario ======
 class Traveller {
   final String _name;
-  final Vehicle _vehicle;
+  Vehicle _vehicle;
 
   Traveller({String name, Vehicle vehicle})
       : _name = name,
         _vehicle = vehicle;
+
+  set vehicle(Vehicle v) => _vehicle = v;
 
   double Move(int km) {
     print('$_name travelling: $km');
